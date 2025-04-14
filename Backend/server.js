@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -11,7 +12,7 @@ app.use("/guide", guideRoute);
 
 mongoose
   .connect(
-    "mongodb+srv://lolan:lolans12k@cluster0.ytaftoz.mongodb.net/?retryWrites=true&w=majority"
+    process.env.MONGO_URI
   )
   .then(() => console.log("Connected to mongodb"))
   .catch((error) => console.log(`error connecting to mongodb: ${error}`));
